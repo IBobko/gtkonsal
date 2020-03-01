@@ -40,6 +40,18 @@ create table group_members
 	primary key (group_id, user_id)
 );
 
+create table customers
+(
+	id serial not null
+		constraint customers_pk
+			primary key,
+	customer_name varchar(100),
+	customer_cargo varchar(255),
+	customer_email varchar(30),
+	customer_phone varchar(100),
+	customer_notes text(255)
+);
+
 insert into authorities values ('ROLE_ADMIN','All privileges');
 insert into groups ("group_name") values ('Admin group'); -- It should be with id 1.
 insert into group_authorities values (1, 'ROLE_ADMIN');
@@ -55,3 +67,6 @@ insert into group_members values (1, 1);
 insert into users (username, password, enabled)
     values ('alexey', '{bcrypt}$2a$10$k0oMm96LMbRvypJKfk6MleG99VRy15eoJw6UVjD298u2ZAK9ktJy6', true); -- It should be with id 1.
 insert into group_members values (1, 2);
+
+insert into customers (id, customer_name, customer_cargo, customer_email, customer_phone, customer_notes);
+
