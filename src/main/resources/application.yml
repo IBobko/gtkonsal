@@ -1,4 +1,4 @@
-server:
+dle server:
   port: 9000 # the port on which our app runs
 
 spring:
