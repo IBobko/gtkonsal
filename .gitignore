@@ -97,3 +97,6 @@ gradle-app.setting
 
 /gradlew*
 
+
+node_modules/
+
