@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@vue/cli": "^4.2.2",
-    "axios": "0.21.1",
+    "axios": "0.34.0",
     "core-js": "^3.6.4",
     "datatables.net-dt": "^1.10.20",
     "vue-datatables-net": "^1.2.5",
