@@ -7,7 +7,7 @@ import ru.gtkonsal.core.entity.PotentialClientEntity;
 import java.util.Calendar;
 
 @Component
-public class PotentialClientMapper extends AbstractMapper {
+public class PotentialClientMapper extends AbstractMapper<PotentialClientEntity, PotentialClient> {
     public PotentialClient toDto(PotentialClientEntity entity) {
         final PotentialClient dto = new PotentialClient();
         dto.setId(entity.getId());

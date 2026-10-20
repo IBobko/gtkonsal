@@ -19,11 +19,10 @@
                 <div class="col-5"><textarea class="form-control" id="cargo" size="255"
                                              v-model="potential_client.cargo"/></div>
             </div>
-
             <div class="row">
-                <div class="col-3"><label for="cargo">Дата запланированного контакта</label></div>
+                <div class="col-3"><label for="contactDate">Дата запланированного контакта</label></div>
                 <div class="col-5">
-                    <date-picker v-model="potential_client.contactDate" valueType="format"></date-picker>
+                    <date-picker id="contactDate" v-model="potential_client.contactDate" valueType="format"></date-picker>
                 </div>
             </div>
             <div class="row">
@@ -31,31 +30,26 @@
                 <div class="col-5"><textarea class="form-control" id="step1"
                                              v-model="potential_client.step1"/></div>
             </div>
-
             <div class="row">
                 <div class="col-3"><label for="step2">Шаг 2</label></div>
                 <div class="col-5"><textarea class="form-control" id="step2"
                                              v-model="potential_client.step2"/></div>
             </div>
-
             <div class="row">
                 <div class="col-3"><label for="step3">Шаг 3</label></div>
                 <div class="col-5"><textarea class="form-control" id="step3"
                                              v-model="potential_client.step3"/></div>
             </div>
-
             <div class="row">
                 <div class="col-3"><label for="stage">Этап</label></div>
                 <div class="col-5"><input class="form-control" id="stage" v-model="potential_client.stage"/>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-3"><label for="reason">Причина отказа</label></div>
                 <div class="col-5"><input class="form-control" id="reason" v-model="potential_client.reason"/>
                 </div>
             </div>
-
         </div>
         <mdb-btn @click="save" color="primary">Сохранить</mdb-btn>
         <mdb-btn @click="del" color="primary">Удалить</mdb-btn>
@@ -108,7 +102,7 @@
             if (this.$route.params.id !== undefined) {
                 this.$http.get(`/potential_clients/get/${this.$route.params.id}`).then(function (response) {
                     that.potential_client = response.data;
-                    that.title = title = `Редактирование клиента ${response.data['id']}`;
+                    that.title = title = `Редактирование потенциального клиента ${response.data['id']}`;
                 }).catch(function () {
                     router.push("/404");
                 });

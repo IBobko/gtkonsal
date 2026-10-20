@@ -11,6 +11,9 @@ import OrderList from "./views/orders/OrderList";
 import MovementTruck from "./views/movement_truck/MovementTruck";
 import PotentialClientList from "./views/potential_clients/PotentialClientList";
 import PotentialClientEdit from "./views/potential_clients/PotentialClientEdit";
+import PotentialClientRequestList from "./views/potential_clients/PotentialClientRequestList";
+import PotentialClientRequestEdit from "./views/potential_clients/PotentialClientRequestEdit";
+
 
 Vue.use(Router);
 
@@ -94,6 +97,27 @@ export default new Router({
                     path: '/potential_clients/create',
                     components: {
                         default: PotentialClientEdit,
+                        sidebar: CustomerSideBar
+                    }
+                },
+                {
+                    path: '/potential_clients/requests/',
+                    components: {
+                        default: PotentialClientRequestList,
+                        sidebar: CustomerSideBar
+                    }
+                },
+                {
+                    path: '/potential_clients/requests/edit/:id',
+                    components: {
+                        default: PotentialClientRequestEdit,
+                        sidebar: CustomerSideBar
+                    }
+                },
+                {
+                    path: '/potential_clients/requests/create',
+                    components: {
+                        default: PotentialClientRequestEdit,
                         sidebar: CustomerSideBar
                     }
                 }
