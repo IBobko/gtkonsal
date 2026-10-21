@@ -42,7 +42,7 @@
     "eslint-plugin-vue": "^5.0.0",
     "register-service-worker": "^1.6.2",
     "sass-loader": "^10.5.2",
-    "vue-cli-plugin-mdb": "~2.0.4",
+    "vue-cli-plugin-mdb": "~2.1.0",
     "vue-template-compiler": "2.7.16",
     "sass": "^1.80.0"
   },

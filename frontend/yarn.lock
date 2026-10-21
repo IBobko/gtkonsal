@@ -13670,10 +13670,10 @@ vue-chartjs@^3.4.2:
   resolved "https://registry.yarnpkg.com/vue-chartjs/-/vue-chartjs-3.5.0.tgz#edd0c2be94c521bcbc5357c24afb9f3560855f84"
   integrity sha512-yWNhG3B6g6lvYqNInP0WaDWNZG/SNb6XnltkjR0wYC5pmLm6jvdiotj8er7Mui8qkJGfLZe6ULjrZdHWjegAUg==
 
-vue-cli-plugin-mdb@~2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/vue-cli-plugin-mdb/-/vue-cli-plugin-mdb-2.0.4.tgz#872de825eef1f47b683c42caea3c0808eef27c00"
-  integrity sha512-lKZ53UTBu6w3aGyC2mLelahCclgqirfDS7iFCt/+eNRobgLGnc6JfFw0gJPbg3Q7nhiexH4s7P/M7VrDG0VXCw==
+vue-cli-plugin-mdb@~2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/vue-cli-plugin-mdb/-/vue-cli-plugin-mdb-2.1.0.tgz#52b9d6c0417d36550492bd7a957243f606e57e88"
+  integrity sha512-HtfXDGdYwd27j18KBL5DIeWgQjimkTTMIGho3G3UIASTkTRe81pY1hHAeIbfMgeYDaNF4a+zZ+gUv04pAPu6wg==
   dependencies:
     fs-extra "^8.1.0"
     git-tags-remote "^1.0.1"
