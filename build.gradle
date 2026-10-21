@@ -1,14 +1,14 @@
 buildscript {
 	dependencies {
-		classpath 'com.h2database:h2:1.4.197'
+		classpath 'com.h2database:h2:2.5.252'
 	}
 }
 
 plugins {
 	id 'org.springframework.boot' version '2.2.4.RELEASE'
-	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'io.spring.dependency-management' version '1.1.7'
 	id 'java'
-	id "org.flywaydb.flyway" version "6.2.3"
+	id "org.flywaydb.flyway" version "13.10.3"
 }
 
 group = 'ru.gtkonsal'
@@ -39,7 +39,7 @@ dependencies {
 	implementation 'org.springframework.security.oauth:spring-security-oauth2:2.1.0.RELEASE' // реализует структуры OAUTH2 для работы сервера авторизации и сервера ресурсов.
 	implementation 'de.codecentric:spring-boot-admin-starter-server'
 	implementation 'org.springframework.session:spring-session-core'
-	implementation 'org.modelmapper:modelmapper:2.3.5'
+	implementation 'org.modelmapper:modelmapper:3.2.7'
 
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
