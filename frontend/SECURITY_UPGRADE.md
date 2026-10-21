@@ -10,6 +10,7 @@ resolved. The change keeps Vue 2, Vue CLI 4 / webpack 4, and MDBVue 6.
 - Bump Vue CLI 4 packages to 4.5.19.
 - Replace obsolete native node-sass with Dart Sass and webpack-4-compatible sass-loader 10.
 - Update core-js to 3.51.x so the refreshed Babel toolchain can resolve its polyfills.
+- Incorporate Dependabot's Babel helpers and runtime 7.29.10 updates.
 - Add a postinstall script to synchronize BOTH committed jQuery files
   (frontend/public/js/jquery.js and jquery.min.js) with the installed package.
 - Add weekly Dependabot checks for frontend npm and backend Gradle dependencies.
@@ -24,8 +25,8 @@ resolved. The change keeps Vue 2, Vue CLI 4 / webpack 4, and MDBVue 6.
   rule in the existing e2e plugin template.
 - `yarn test:unit --runInBand` found no unit tests in this repository. This is
   a coverage gap, not a passing test suite.
-- `yarn audit --level high` reported 109 critical, 528 high, 382 moderate,
-  and 64 low vulnerabilities among 2300 dependencies. Counts can change as
+- `yarn audit --level high` reported 106 critical, 528 high, 367 moderate,
+  and 64 low vulnerabilities among 2297 dependencies. Counts can change as
   advisories and dependency versions change.
 
 The available Node 24 is outside the declared engine range of
