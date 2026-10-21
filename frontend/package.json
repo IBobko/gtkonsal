@@ -20,7 +20,7 @@
     "vue-datatables-net": "^1.2.5",
     "global": "^4.4.0",
     "mdbvue": "^6.5.1",
-    "vee-validate": "^3.2.0",
+    "vee-validate": "^3.4.15",
     "vue": "2.7.16",
     "vue-router": "^3.6.5",
     "vue2-datepicker": "^3.4.1",
