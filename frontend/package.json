@@ -69,7 +69,10 @@
           "ignores": [
             "home2",
             "customers",
-            "Dashboard"
+            "Dashboard",
+            "Maps",
+            "Profile",
+            "Tables"
           ]
         }
       ]
