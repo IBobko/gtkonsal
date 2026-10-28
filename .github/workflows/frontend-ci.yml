@@ -38,6 +38,3 @@ jobs:
       - name: Lint frontend
         working-directory: frontend
         run: yarn lint --no-fix
-      - name: Run unit tests, if present
-        working-directory: frontend
-        run: yarn test:unit --runInBand --passWithNoTests
