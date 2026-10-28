@@ -1,0 +1,43 @@
+name: Frontend CI
+
+on:
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-ci.yml'
+  push:
+    branches:
+      - master
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-ci.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Use Yarn Classic
+        run: |
+          corepack enable
+          corepack prepare yarn@1.22.22 --activate
+      - name: Install dependencies from lockfile
+        working-directory: frontend
+        env:
+          CYPRESS_INSTALL_BINARY: '0'
+        run: yarn install --frozen-lockfile --ignore-engines --non-interactive --network-timeout 120000
+      - name: Build production frontend
+        working-directory: frontend
+        run: yarn build
+      - name: Lint frontend
+        working-directory: frontend
+        run: yarn lint --no-fix
+      - name: Run unit tests, if present
+        working-directory: frontend
+        run: yarn test:unit --runInBand --passWithNoTests
