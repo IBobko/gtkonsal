@@ -1,0 +1,66 @@
+name: One-off security upgrade of webpack serializer
+
+on:
+  push:
+    branches:
+      - fix/serialize-javascript-7-security-20261028
+    paths:
+      - frontend/package.json
+      - .github/workflows/refresh-serializer-lock.yml
+
+permissions:
+  contents: write
+
+jobs:
+  verify-serializer:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Use Yarn Classic
+        run: |
+          corepack enable
+          corepack prepare yarn@1.22.22 --activate
+      - name: Resolve with patched serialize-javascript version
+        working-directory: frontend
+        env:
+          CYPRESS_INSTALL_BINARY: '0'
+        run: yarn install --ignore-engines --non-interactive --network-timeout 120000
+      - name: Verify resolved module and serialize/deserialize smoke test
+        working-directory: frontend
+        run: |
+          node - <<'NODE'
+          const assert = require('node:assert/strict');
+          const fs = require('node:fs');
+          const pkg = require('serialize-javascript/package.json');
+          assert.equal(pkg.version, '7.1.4', 'patched serializer should be installed');
+          const serialize = require('serialize-javascript');
+          const x = serialize({text:'hello', arr:[1,2,3], obj:{ok:true}});
+          assert.deepEqual(JSON.parse(x), {text:'hello',arr:[1,2,3],obj:{ok:true}});
+          const lock = fs.readFileSync('yarn.lock','utf8');
+          const entries = lock.split(/\n(?=[^\s#][^\n]*:\n)/).filter(b=>b.split('\n')[0].includes('serialize-javascript@'));
+          assert(entries.length > 0, 'serializer must exist in lockfile');
+          for(const entry of entries) {
+            assert.match(entry, /\n  version "7\.1\.4"/, 'all serializer lockfile entries must be patched');
+          }
+          console.log('serialize-javascript 7.1.4 is resolved for webpack plugins');
+          NODE
+      - name: Commit refreshed lockfile
+        run: |
+          if ! git diff --quiet -- frontend/yarn.lock; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add frontend/yarn.lock
+            git commit -m "chore(frontend): pin patched serializer in Yarn lockfile"
+            git push origin HEAD:fix/serialize-javascript-7-security-20261028
+          fi
+      - name: Production bundle including asset copy and CSS minimization
+        working-directory: frontend
+        run: yarn build
+      - name: Lint frontend
+        working-directory: frontend
+        run: yarn lint --no-fix
