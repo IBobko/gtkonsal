@@ -139,3 +139,30 @@ dependency resolution, old-chain assertions, production build and lint
 all passed. The unit-test command passed with `--passWithNoTests`, but
 the repository still has no unit tests. Browser and backend integration
 were not exercised. Other advisories may remain.
+
+## Dependabot `@tootallnate/once` follow-up, 28 October 2026
+
+Dependabot reported `security_update_not_possible` for
+`@tootallnate/once@1.1.2`, because the installed Jest 27 testing
+toolchain depended on `jsdom@16.7.0` and its
+`http-proxy-agent@4.0.1 -> @tootallnate/once@1` dependency chain.
+The advisory's earliest fixed version is `@tootallnate/once@2.0.1`.
+
+The frontend did not have unit tests (previous checks passed only with
+`--passWithNoTests`). We therefore removed the unused
+`@vue/cli-plugin-unit-jest`, `jest`, `babel-jest`, `@vue/vue2-jest`,
+`@vue/test-utils` and `babel-core` entries, the unused Jest configuration
+and `test:unit` script, and the empty Jest step from the frontend CI job.
+The production application, Vue CLI 5 build service, Vue 2 compiler and
+Cypress e2e setup remain.
+
+After regenerating `frontend/yarn.lock` using Yarn Classic 1.22.22,
+the `@tootallnate/once@1.1.2` entry is no longer present. The new
+dependency tree, production build and `yarn lint --no-fix` passed in
+GitHub Actions using Node.js 20 on 28 October 2026.
+
+This addresses the specific Dependabot `@tootallnate/once` blocker
+and does not establish the absence of other advisories. Unit-test
+coverage remains absent and would require introducing a maintained
+test runner and actual tests. Browser and backend integration were
+not tested in this change.
