@@ -114,3 +114,28 @@ The migration was checked in GitHub Actions using Node.js 20 and Yarn 1.22.22:
   requests, and the live backend integration.
 - Existing historical audit figures above should not be treated as a new audit
   of this Vue CLI 5 dependency tree.
+
+## Dependabot cookie follow-up, 28 October 2026
+
+Dependabot found a separate `security_update_not_possible` issue for
+`cookie@0.4.0`. Its dependency path was:
+
+```
+@vue/cli@5.0.9 -> @vue/cli-ui -> express@4.17.1 -> cookie@0.4.0
+```
+
+The application only invokes `vue-cli-service` for build, development, lint,
+and test tasks. The separate global scaffolding/UI package `@vue/cli` is not
+needed by those scripts, so it was removed from `dependencies`, rather than
+forcing an incompatible transitive `cookie` version.
+
+The Yarn Classic lockfile was regenerated. The old `cookie@0.4.0` and
+`express@4.17.1` entries are gone; the remaining `cookie@0.7.2` is not
+affected by this specific `cookie < 0.7.0` advisory. The dependency
+`@vue/cli-service@5.0.9` remains installed.
+
+Verification used GitHub Actions with Node.js 20 / Yarn Classic 1.22.22:
+dependency resolution, old-chain assertions, production build and lint
+all passed. The unit-test command passed with `--passWithNoTests`, but
+the repository still has no unit tests. Browser and backend integration
+were not exercised. Other advisories may remain.
