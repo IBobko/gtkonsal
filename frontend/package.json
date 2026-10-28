@@ -46,7 +46,9 @@
     "vue-template-compiler": "2.7.16",
     "sass": "^1.80.0",
     "@vue/vue2-jest": "^27.0.0",
-    "cypress": "^8.7.0"
+    "cypress": "^8.7.0",
+    "@babel/core": "^7.29.0",
+    "jest": "^27.5.1"
   },
   "eslintConfig": {
     "root": true,
@@ -60,7 +62,18 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {},
+    "rules": {
+      "vue/multi-word-component-names": [
+        "error",
+        {
+          "ignores": [
+            "home2",
+            "customers",
+            "Dashboard"
+          ]
+        }
+      ]
+    },
     "overrides": [
       {
         "files": [
