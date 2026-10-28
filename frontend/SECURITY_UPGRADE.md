@@ -62,3 +62,55 @@ yarn audit --level high
 Browser flows, backend integration, and deployment were not tested. In
 particular, Axios 1.x request and error behavior needs validation against the
 live backend before deployment.
+
+## Vue CLI 5 migration, 28 October 2026
+
+This follow-up supersedes the **Vue CLI 4 / webpack 4** toolchain state described
+in the 21 October entry above. The earlier entry remains as a historical record.
+
+### Changes
+
+- Align `@vue/cli-service`, Babel, ESLint, unit-Jest and e2e-Cypress Vue CLI
+  plugins on `5.0.9`. Vue CLI 5 uses webpack 5.
+- Keep the application on **Vue 2.7.16** (not Vue 3), because `new Vue(...)`,
+  MDBVue 6, Vue Router 3, Vuex 3 and other existing components use Vue 2.
+  Keep the matching `vue-template-compiler` for Vue 2 test utilities.
+- Update the webpack-compatible Sass loader, the Jest 27 / Vue 2 transformer,
+  the ESLint toolchain, and the Cypress 8 dependency required by its CLI plugin.
+- Preserve existing component names with a narrow ESLint rule exception rather
+  than changing application component identities as part of a tooling upgrade.
+- Regenerate `frontend/yarn.lock` using Yarn Classic 1.22.22.
+
+### Dependabot finding
+
+The lockfile now resolves `selfsigned@2.4.1` and `node-forge@1.4.2`, rather
+than the vulnerable `selfsigned@1.10.14` -> `node-forge@0.10.0` path that
+blocked Dependabot's automatic security update on 28 October 2026.
+This addresses that **specific** `security_update_not_possible` conflict; it
+is not a claim that every outstanding advisory is resolved.
+
+### Verification on 28 October 2026
+
+The migration was checked in GitHub Actions using Node.js 20 and Yarn 1.22.22:
+
+- `yarn install --ignore-engines --non-interactive`: succeeded.
+- `yarn build`: production bundle succeeded with webpack 5, without the
+  `--openssl-legacy-provider` workaround previously needed for webpack 4.
+- `yarn lint --no-fix`: succeeded, preserving the existing component names.
+- `yarn test:unit --runInBand --passWithNoTests`: command succeeded. The
+  repository has no unit tests, so this is **not** a validated test suite.
+- Cypress binary installation was disabled in the CI dependency-install step;
+  no end-to-end browser tests were performed.
+
+### Remaining work and risks
+
+- Vue 2 remains end-of-life. Updating Vue CLI **does not migrate Vue itself**;
+  Vue 3 requires replacements/migrations for MDBVue, Vue Router, Vuex and other
+  Vue 2 libraries.
+- Previously committed static frontend bundles in `public/js` still need
+  separate security tracking; refreshing Yarn dependencies does not update them.
+- Browser behavior, backend integration and deployment were not validated.
+  Before production deployment, verify login, forms, list views, network
+  requests, and the live backend integration.
+- Existing historical audit figures above should not be treated as a new audit
+  of this Vue CLI 5 dependency tree.
