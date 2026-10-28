@@ -166,3 +166,41 @@ and does not establish the absence of other advisories. Unit-test
 coverage remains absent and would require introducing a maintained
 test runner and actual tests. Browser and backend integration were
 not tested in this change.
+
+## Dependabot serialize-javascript follow-up, 28 October 2026
+
+Dependabot reported `security_update_not_possible` for
+`serialize-javascript@6.0.2` (the advisory requires at least 7.1.3).
+
+The active Vue CLI 5 webpack build has two parent dependencies:
+
+```text
+@vue/cli-service@5.0.9
+  -> copy-webpack-plugin@9.1.0 -> serialize-javascript@^6.0.0
+  -> css-minimizer-webpack-plugin@3.4.1 -> serialize-javascript@^6.0.0
+```
+
+Both plugins are used by the production build, so they cannot simply be
+removed. To address this issue, `frontend/package.json` sets a Yarn
+Classic `resolutions` override to `serialize-javascript@7.1.4`.
+This intentionally overrides the parents' requested major version 6.
+Because this is a forced major upgrade, **runtime compatibility is not
+guaranteed by semver**: the plugin combination requires regression checks.
+
+The Yarn Classic 1.22.22 lockfile now contains `serialize-javascript@7.1.4`
+only, including resolutions requested via `^6.0.0`; it no longer
+installs the vulnerable `6.0.2`. The upstream serializer v7 requires
+**Node.js 20 or newer**. Verify the actual production deployment machine
+also uses a supported Node.js version before running `yarn install`
+or rebuilding the frontend.
+
+Verification in GitHub Actions on Node.js 20 / Yarn 1.22.22:
+- `yarn install --ignore-engines`: success
+- serializer version assertion and sample serialization: success
+- `yarn build` (production asset copying and CSS minimization): success
+- `yarn lint --no-fix`: success
+
+These checks establish install and build compatibility for this repository.
+No browser, backend integration, or production deployment checks were run.
+The upgrade fixes this specific reported dependency version, not all
+remaining security advisories.
