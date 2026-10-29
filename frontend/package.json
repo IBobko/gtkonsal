@@ -40,7 +40,7 @@
     "vue-template-compiler": "2.7.16",
     "sass": "^1.80.0",
     "cypress": "^8.7.0",
-    "@babel/core": "^7.29.0"
+    "@babel/core": "^8.0.9"
   },
   "eslintConfig": {
     "root": true,
