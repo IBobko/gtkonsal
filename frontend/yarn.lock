@@ -8310,10 +8310,10 @@ vue-clickaway@^2.2.2:
   dependencies:
     loose-envify "^1.2.0"
 
-vue-datatables-net@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/vue-datatables-net/-/vue-datatables-net-1.2.5.tgz#759c064826d5f3e2063e3e68fa312b3299e9e134"
-  integrity sha512-Q4azy+jQdjE2WZgifAtnNejmB1OTTLZ9JfA7LxDS7JT6YATxwgyqYE6JTwY4pj3rQz3F7O+VKJzLTMtYWweKgQ==
+vue-datatables-net@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/vue-datatables-net/-/vue-datatables-net-2.0.1.tgz#c17f62d8d91faf76f32950180244bd22061e4e12"
+  integrity sha512-oMUp4unqjDmj+M5QEUUm3TOJvSmTFfaLIZcZiQaPsjrjHfJHcCghBoe50ZNRgcVzhScfxvcdO0+1r2zfObNOkA==
 
 vue-eslint-parser@^9.4.3:
   version "9.4.3"

@@ -15,7 +15,7 @@
     "axios": "^1.20.0",
     "core-js": "^3.51.0",
     "datatables.net-dt": "^1.13.11",
-    "vue-datatables-net": "^1.2.5",
+    "vue-datatables-net": "^2.0.1",
     "global": "^4.4.0",
     "mdbvue": "^6.5.1",
     "vee-validate": "^3.4.15",
