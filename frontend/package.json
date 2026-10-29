@@ -14,7 +14,7 @@
   "dependencies": {
     "axios": "^1.20.0",
     "core-js": "^3.51.0",
-    "datatables.net-dt": "^1.13.11",
+    "datatables.net-dt": "^3.1.4",
     "vue-datatables-net": "^1.2.5",
     "global": "^4.4.0",
     "mdbvue": "^6.5.1",
