@@ -3373,20 +3373,17 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-datatables.net-dt@^1.13.11:
-  version "1.13.11"
-  resolved "https://registry.npmjs.org/datatables.net-dt/-/datatables.net-dt-1.13.11.tgz#931e01e3fa9ec2f44d7d5ea87e91fb4ffb8eaaae"
-  integrity sha512-4GpS4OFLwIMfhb5UdJh6bEnh0E52jIJOlx7KLKs1pSce/xpHjvcmucbUWNaEndQIpHXtIxmVPoqcDB0ZbiVB+A==
+datatables.net-dt@^3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/datatables.net-dt/-/datatables.net-dt-3.1.4.tgz#dc5bd796566938f94ac7b3c298ca0d2a42f984f3"
+  integrity sha512-HST6HmWEMr6SA6FM2SpYu2ko0In5nHjUb03Ocop2gsHLWoRP18sgVbehxUtRS3QZP4eHfU68ujs/gnzd0U2t9g==
   dependencies:
-    datatables.net "1.13.11"
-    jquery "1.8 - 4"
+    datatables.net "3.1.4"
 
-datatables.net@1.13.11:
-  version "1.13.11"
-  resolved "https://registry.npmjs.org/datatables.net/-/datatables.net-1.13.11.tgz#e2a4c8b50553512f241ebfcbc078d74d551183b2"
-  integrity sha512-AE6RkMXziRaqzPcu/pl3SJXeRa6fmXQG/fVjuRESujvkzqDCYEeKTTpPMuVJSGYJpPi32WGSphVNNY1G4nSN/g==
-  dependencies:
-    jquery "1.8 - 4"
+datatables.net@3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/datatables.net/-/datatables.net-3.1.4.tgz#b737343bef9ec0acfd4c6a3b5774a0925f83411f"
+  integrity sha512-tnk14y/AOr0Z1d7avIUvCcOGgqZpeo7B6g6RQiycMQckEMq2FaaZTG1Q1xD6Kci5gpAvdjZInDmbscoiVSTyGw==
 
 date-format-parse@^0.2.7:
   version "0.2.7"
@@ -5225,11 +5222,6 @@ joi@^17.4.0:
     "@sideway/address" "^4.1.5"
     "@sideway/formula" "^3.0.1"
     "@sideway/pinpoint" "^2.0.0"
-
-"jquery@1.8 - 4":
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/jquery/-/jquery-4.0.0.tgz#95c33ac29005ff72ec444c5ba1cf457e61404fbb"
-  integrity sha512-TXCHVR3Lb6TZdtw1l3RTLf8RBWVGexdxL6AC8/e0xZKEpBflBsjh9/8LXw+dkNFuOyW9B7iB3O1sP7hS0Kiacg==
 
 jquery@^3.7.1:
   version "3.7.1"
